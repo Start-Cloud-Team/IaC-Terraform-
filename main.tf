@@ -1,6 +1,6 @@
-action "aws_codebuild_start_build" "deploy" {
+action "aws_codebuild_start_build" "codebuild" {
   config {
-    project_name = aws_codebuild_project.iac-webgoat-codebuild.name
+    project_name = aws_codebuild_project.iac-codebuild.name
     source_version = "main"
     timeout        = 1800
 
