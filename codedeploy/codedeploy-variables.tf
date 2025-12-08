@@ -1,9 +1,3 @@
-variable "account_id"{
-    type = string
-    default = "329984431650"
-    description = "AWS Account ID"
-}
-
 variable "region"{
     type = string
     default = "ap-northeast-2"
@@ -33,4 +27,5 @@ variable "alb_tg_blue"{
 variable "alb_tg_green"{
     type = string
     description = "alb target group green name"
+
 }
