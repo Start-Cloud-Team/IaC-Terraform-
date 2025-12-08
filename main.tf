@@ -13,11 +13,6 @@ module "vpc" {
 
 module "dast-tool" {
   source = "./dast-tool"
-
-  hawk_api_key     = "hawk.vaAWHG3c2zdYtONm25Hf.27xhj5W9ch518coZ1YMr" 
-  docker_hub_token = "dckr_pat_Mk9XpmutM9r-TrgVTXggFwSNQt4"
-
-  docker_hub_id    = "alightguy"
 }
 
 module "codepipeline" {
@@ -78,3 +73,4 @@ action "aws_codebuild_start_build" "codebuild" {
     }
   }
 }
+
