@@ -1,3 +1,4 @@
+####################ECS task create####################
 resource "aws_ecs_task_definition" "iac-task"{
     family                   = "iac-task"
     network_mode             = "awsvpc"
@@ -34,7 +35,9 @@ resource "aws_ecs_task_definition" "iac-task"{
 TASK_DEFINITION
 }
 
+####################ECS log####################
 resource "aws_cloudwatch_log_group" "iac_ecs_log_group" {
   name              = "/ecs/iac-task" 
   retention_in_days = 7
+
 }
