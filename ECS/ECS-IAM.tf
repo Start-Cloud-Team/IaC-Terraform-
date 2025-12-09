@@ -1,3 +1,4 @@
+####################ECS cluster Policy####################
 resource "aws_iam_policy" "iac-cluster-policy" {
   name = var.cluster-policy
   policy = jsonencode({
@@ -65,11 +66,13 @@ resource "aws_iam_role" "iac-cluster-role" {
   })
 }
 
+####################ECS cluster Role and Policy attach####################
 resource "aws_iam_role_policy_attachment" "iac-webgoat-ecs-cluster-attach" {
   role       = "iac-cluster-role"
   policy_arn = aws_iam_policy.iac-cluster-policy.arn
 }
 
+####################ECS task execution role####################
 resource "aws_iam_role" "iac-task-execution-role" {
   name = var.task-execution-role
 
@@ -85,6 +88,7 @@ resource "aws_iam_role" "iac-task-execution-role" {
   })
 }
 
+####################ECS task execution Role and Policy attach####################
 resource "aws_iam_role_policy_attachment" "ecs_task_execution_policy_attach1" {
   role       = aws_iam_role.iac-task-execution-role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
@@ -98,7 +102,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution_policy_attach3" {
   policy_arn = "arn:aws:iam::aws:policy/AWSCodeDeployFullAccess"
 }
 
-
+####################ECS cluster service role####################
 resource "aws_iam_role" "iac_ecs_service_role" {
   name = "iac-cluster-service-role"
 
@@ -114,11 +118,13 @@ resource "aws_iam_role" "iac_ecs_service_role" {
   })
 }
 
+####################ECS cluster service Role and Policy attach####################
 resource "aws_iam_role_policy_attachment" "iac_ecs_service_role_attach" {
   role       = aws_iam_role.iac_ecs_service_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceRole"
 }
 
+####################ECS task Policy####################
 resource "aws_iam_policy" "iac_ecs_task_policy" {
   name = "iac_ecs_task_policy"
 
@@ -172,6 +178,7 @@ resource "aws_iam_policy" "iac_ecs_task_policy" {
   })
 }
 
+####################ECS task Role####################
 resource "aws_iam_role" "iac-task-role" {
   name = var.task-role
 
@@ -187,7 +194,9 @@ resource "aws_iam_role" "iac-task-role" {
   })
 }
 
+####################ECS task Role and Policy attach####################
 resource "aws_iam_role_policy_attachment" "ecs_task_policy_attach" {
   role       = var.task-role
   policy_arn = aws_iam_policy.iac_ecs_task_policy.arn
+
 }
