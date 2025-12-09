@@ -1,4 +1,4 @@
-####################CodeBuild IAM####################
+####################CodeBuild Policy####################
 resource "aws_iam_policy" "iac-codebuild-policy" {
   name = "${var.codebuild_name}-policy"
   policy = jsonencode({
@@ -97,6 +97,7 @@ resource "aws_iam_policy" "iac-codebuild-policy" {
   })
 }
 
+####################CodeBuild Role####################
 resource "aws_iam_role" "iac-codebuild-role" {
   name = "${var.codebuild_name}-role"
 
@@ -112,8 +113,10 @@ resource "aws_iam_role" "iac-codebuild-role" {
   })
 }
 
+####################Codebuild Policy Role attach####################
 resource "aws_iam_role_policy_attachment" "iac-codebuild-attach" {
   role       = aws_iam_role.iac-codebuild-role.name
   policy_arn = aws_iam_policy.iac-codebuild-policy.arn
 
 }
+
