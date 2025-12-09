@@ -1,4 +1,4 @@
-
+####################service module####################
 module "codebuild" {
   source = "./CodeBuild"
 }
@@ -54,6 +54,7 @@ module "ecs" {
   tg_blue_arn = module.alb.tg_blue_arn
 }
 
+####################Codebuild start####################
 action "aws_codebuild_start_build" "codebuild" {
   config {
     project_name = module.codebuild.codebuild_name
@@ -73,4 +74,5 @@ action "aws_codebuild_start_build" "codebuild" {
     }
   }
 }
+
 
