@@ -15,7 +15,6 @@ resource "aws_security_group_rule" "iac-sg-alb-inbound" {
 }
 
 ####################alb security group outboung rule create####################
-
 resource "aws_security_group_rule" "mysgoutbound" {
   type              = "egress"
   from_port         = 0
@@ -25,3 +24,4 @@ resource "aws_security_group_rule" "mysgoutbound" {
   security_group_id = aws_security_group.iac-alb-sg.id
 
 }
+
