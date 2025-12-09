@@ -1,3 +1,4 @@
+####################ECS security group create####################
 resource "aws_security_group" "iac-sg" {
     name   = var.sg
     vpc_id = var.vpc_id
@@ -15,4 +16,5 @@ resource "aws_security_group" "iac-sg" {
         protocol    = "-1"
         cidr_blocks = ["0.0.0.0/0"]
     }
+
 }
