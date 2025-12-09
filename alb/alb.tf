@@ -1,3 +1,4 @@
+####################alb create####################
 resource "aws_lb" "iac-alb" {
     name                = "${var.alb}"
     load_balancer_type  = "application"
@@ -5,6 +6,7 @@ resource "aws_lb" "iac-alb" {
     security_groups     = [aws_security_group.iac-alb-sg.id]
 }
 
+####################alb listener create####################
 resource "aws_lb_listener" "iac-alb-listener" {
     load_balancer_arn = aws_lb.iac-alb.arn
     port              = 80
@@ -16,7 +18,7 @@ resource "aws_lb_listener" "iac-alb-listener" {
     }
 }
 
-####################target group####################
+####################target group create####################
 resource "aws_lb_target_group" "iac-alb-blue-tg" {
     name        = "iac-alb-blue-tg"
     port        = 8080
@@ -53,6 +55,7 @@ resource "aws_lb_target_group" "iac-alb-green-tg" {
     }
 }
 
+####################alb url create####################
 resource "aws_ssm_parameter" "dast_target_url" {
   name      = "/hawk/target_url"
   type      = "String"
@@ -63,3 +66,4 @@ resource "aws_ssm_parameter" "dast_target_url" {
     aws_lb.iac-alb
   ]
 }
+
