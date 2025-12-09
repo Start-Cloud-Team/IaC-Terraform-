@@ -1,3 +1,4 @@
+####################CodeBuild IAM####################
 resource "aws_iam_policy" "iac-codebuild-policy" {
   name = "${var.codebuild_name}-policy"
   policy = jsonencode({
@@ -114,4 +115,5 @@ resource "aws_iam_role" "iac-codebuild-role" {
 resource "aws_iam_role_policy_attachment" "iac-codebuild-attach" {
   role       = aws_iam_role.iac-codebuild-role.name
   policy_arn = aws_iam_policy.iac-codebuild-policy.arn
+
 }
