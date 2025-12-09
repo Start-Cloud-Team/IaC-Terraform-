@@ -1,3 +1,4 @@
+####################ECS cluster create####################
 resource "aws_ecs_cluster" "iac-ecs-cluster" {
     name = var.cluster
 
@@ -7,6 +8,7 @@ resource "aws_ecs_cluster" "iac-ecs-cluster" {
     }
 }
 
+####################ECS cluster service create####################
 resource "aws_ecs_service" "iac-cluster-service" {
   name    = "iac-cluster-service"
   cluster = aws_ecs_cluster.iac-ecs-cluster.arn
@@ -41,3 +43,4 @@ resource "aws_ecs_service" "iac-cluster-service" {
     ]
   }
 }
+
